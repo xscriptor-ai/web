@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --bg: #08090a;
+  --bg-alt: #0d0f11;
+  --panel: #101214;
+  --panel-2: #14171a;
+  --fg: #f5f6f7;
+  --muted: #98a2ac;
+  --border: #21252a;
+  --border-strong: #2f353c;
+  --primary: #c8f169;
+  --primary-fill: #c8f169;
+  --on-primary: #101400;
+  --primary-soft: color-mix(in srgb, #c8f169 13%, transparent);
+  --code-bg: #0b0d0f;
+  --radius: 0.625rem;
+  --radius-lg: 1rem;
+  --max: 76rem;
+  --nav-h: 3.75rem;
+  --font-display: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f7f8f4;
+  --bg-alt: #eef0e8;
+  --panel: #ffffff;
+  --panel-2: #fbfcf7;
+  --fg: #0c0e0a;
+  --muted: #5b6470;
+  --border: #e1e4da;
+  --border-strong: #c8cdbe;
+  --primary: #4d7c0f;
+  --primary-fill: #a3e635;
+  --on-primary: #17260a;
+  --primary-soft: color-mix(in srgb, #a3e635 24%, transparent);
+  --code-bg: #f0f2e9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 1rem);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-feature-settings: "liga" 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--primary-fill);
+  color: var(--on-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+  border: 3px solid var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

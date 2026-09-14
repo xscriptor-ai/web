@@ -1,0 +1,32 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.badge[data-tone="primary"] {
+  border-color: color-mix(in srgb, var(--primary) 42%, var(--border) 58%);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.badge[data-tone="muted"] {
+  opacity: 0.85;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  flex: 0 0 auto;
+}

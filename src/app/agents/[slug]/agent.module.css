@@ -1,0 +1,262 @@
+.page {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.breadcrumb a {
+  transition: color 0.15s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--primary);
+}
+
+.header {
+  display: grid;
+  gap: 0.6rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  flex: 0 0 auto;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.description {
+  margin: 0;
+  max-width: 70ch;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 17.5rem;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.content {
+  display: grid;
+  gap: 2.5rem;
+  min-width: 0;
+}
+
+.sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + 1rem);
+  min-width: 0;
+}
+
+.panel {
+  display: grid;
+  gap: 0.6rem;
+  padding: 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+}
+
+.panelLabel {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.panelLabel:first-child {
+  margin-top: 0;
+}
+
+.mention {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.5rem 0.6rem 0.5rem 0.75rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--code-bg);
+}
+
+.mention code {
+  color: var(--primary);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.meta {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0;
+}
+
+.meta > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.meta dt {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.meta dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.meta dd a {
+  color: var(--primary);
+}
+
+.permissions {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.permissions li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 0.5rem;
+  align-items: baseline;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.permTool {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+.permMode {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--fg);
+}
+
+.permPatterns {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  overflow-wrap: anywhere;
+}
+
+.source {
+  margin-top: 0.4rem;
+  color: var(--primary);
+  font-size: 0.82rem;
+}
+
+.source:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.related {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.relatedTitle {
+  margin: 0;
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.relatedList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.relatedChip,
+.relatedMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.relatedChip:hover,
+.relatedMore:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.relatedDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    position: static;
+    order: -1;
+  }
+}

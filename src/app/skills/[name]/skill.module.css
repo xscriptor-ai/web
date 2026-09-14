@@ -1,0 +1,132 @@
+.page {
+  display: grid;
+  gap: 1.75rem;
+  min-width: 0;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.breadcrumb a:hover {
+  color: var(--primary);
+}
+
+.header {
+  display: grid;
+  gap: 0.7rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  overflow-wrap: anywhere;
+}
+
+.description {
+  margin: 0;
+  max-width: 70ch;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.source {
+  color: var(--primary);
+  font-size: 0.85rem;
+  width: fit-content;
+}
+
+.source:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.body {
+  min-width: 0;
+  max-width: 74ch;
+}
+
+.references {
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.referencesTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.referenceList {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.reference {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.reference:hover {
+  border-color: var(--border-strong);
+}
+
+.referenceSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.referenceSummary::-webkit-details-marker {
+  display: none;
+}
+
+.referenceSummary:hover {
+  color: var(--primary);
+}
+
+.referenceName {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.referenceHint {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.reference[open] .referenceHint {
+  color: var(--primary);
+}
+
+.referenceBody {
+  padding: 0.85rem 1rem 1rem;
+  border-top: 1px solid var(--border);
+}

@@ -1,0 +1,30 @@
+.main {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 6rem;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 50;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--fg);
+  font-size: 0.85rem;
+  transition: top 0.15s ease;
+}
+
+.skip:focus {
+  top: 1rem;
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 1.75rem 1rem 4rem;
+  }
+}

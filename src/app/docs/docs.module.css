@@ -1,0 +1,142 @@
+.page {
+  display: grid;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.header {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 62ch;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 14rem minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.content {
+  display: grid;
+  gap: 3rem;
+  min-width: 0;
+  max-width: 78ch;
+}
+
+.section {
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.text {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.text code {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  padding: 0.08rem 0.35rem;
+  font-size: 0.85em;
+  color: var(--fg);
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.table th,
+.table td {
+  padding: 0.55rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.table tr:last-child th,
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+.table th {
+  background: var(--bg-alt);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.table code {
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+.list li::marker {
+  color: var(--primary);
+}
+
+.list code {
+  color: var(--fg);
+  font-size: 0.85em;
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
