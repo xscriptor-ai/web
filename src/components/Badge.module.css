@@ -2,31 +2,33 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.2rem 0.6rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--panel);
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border-visible);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-data);
+  font-size: var(--label);
+  letter-spacing: 0.08em;
   line-height: 1.5;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
 .badge[data-tone="primary"] {
-  border-color: color-mix(in srgb, var(--primary) 42%, var(--border) 58%);
-  background: var(--primary-soft);
-  color: var(--primary);
+  border-color: var(--text-display);
+  color: var(--text-display);
 }
 
 .badge[data-tone="muted"] {
-  opacity: 0.85;
+  border-color: var(--border);
+  color: var(--text-disabled);
 }
 
 .dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-visible);
   flex: 0 0 auto;
 }

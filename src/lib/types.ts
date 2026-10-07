@@ -1,5 +1,5 @@
 export type AgentKind = "specialized" | "senior";
-export type SkillKind = "project" | "senior";
+export type SkillKind = "project" | "senior" | "content";
 
 export interface AgentIndex {
   slug: string;
@@ -56,7 +56,7 @@ export interface Meta {
   generatedAt: string;
   ref: string;
   agents: { total: number; specialized: number; senior: number };
-  skills: { total: number; project: number; senior: number };
+  skills: { total: number; project: number; senior: number; content: number };
   commands: number;
   groups: GroupInfo[];
   sources: { agents: string; skills: string };

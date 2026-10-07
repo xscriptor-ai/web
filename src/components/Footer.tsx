@@ -19,8 +19,10 @@ const columns = [
     links: [
       { label: "agents", href: "https://github.com/xscriptor-ai/agents", external: true },
       { label: "skills", href: "https://github.com/xscriptor-ai/skills", external: true },
-      { label: "scripts", href: "https://github.com/xscriptor-ai/scripts", external: true },
+      { label: "environments", href: "https://github.com/xscriptor-ai/environments", external: true },
       { label: "packages", href: "https://github.com/xscriptor-ai/packages", external: true },
+      { label: "scripts", href: "https://github.com/xscriptor-ai/scripts", external: true },
+      { label: "research", href: "https://github.com/xscriptor-ai/research", external: true },
     ],
   },
   {
@@ -30,6 +32,7 @@ const columns = [
       { label: "@xscriptor/skill-xscriptor", href: "https://www.npmjs.com/package/@xscriptor/skill-xscriptor", external: true },
       { label: "@xscriptor/skill-devx", href: "https://www.npmjs.com/package/@xscriptor/skill-devx", external: true },
       { label: "@xscriptor/skill-samurai", href: "https://www.npmjs.com/package/@xscriptor/skill-samurai", external: true },
+      { label: "@xscriptor/skill-xglassmorphism", href: "https://www.npmjs.com/package/@xscriptor/skill-xglassmorphism", external: true },
     ],
   },
 ];
@@ -40,7 +43,7 @@ export function Footer() {
       <div className={styles.inner}>
         <div className={styles.brandColumn}>
           <div className={styles.brand}>
-            <img className={styles.logo} src={`${basePath}/logo-glyph.png`} alt="" width={30} height={30} />
+            <img className={styles.logo} src={`${basePath}/logo-glyph.svg`} alt="" width={28} height={28} />
             <span className={styles.wordmark}>
               xscriptor<span className={styles.wordmarkDim}>-ai</span>
             </span>

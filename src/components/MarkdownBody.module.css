@@ -1,7 +1,7 @@
 .prose {
   min-width: 0;
-  font-size: 0.95rem;
-  color: var(--fg);
+  font-size: var(--body-sm);
+  color: var(--text-primary);
 }
 
 .prose > *:first-child {
@@ -13,33 +13,38 @@
 .prose h3,
 .prose h4 {
   margin: 2.1rem 0 0.75rem;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
+  font-weight: 400;
   line-height: 1.25;
-  font-weight: 650;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
 }
 
 .prose h1 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .prose h2 {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-visible);
 }
 
 .prose h3 {
-  font-size: 1.03rem;
+  font-size: 1rem;
+  color: var(--text-display);
 }
 
 .prose h4 {
-  font-size: 0.95rem;
+  font-family: var(--font-data);
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .prose p {
   margin: 0.75rem 0;
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
 .prose ul,
@@ -55,19 +60,19 @@
 }
 
 .prose li::marker {
-  color: var(--primary);
+  color: var(--interactive);
 }
 
 .prose a {
-  color: var(--primary);
+  color: var(--interactive);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .prose code {
   background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 0.3rem;
+  border: 1px solid var(--border-visible);
+  border-radius: var(--radius);
   padding: 0.08rem 0.35rem;
   font-size: 0.84em;
 }
@@ -75,12 +80,12 @@
 .prose pre {
   margin: 1rem 0;
   padding: 1rem 1.1rem;
-  background: #0a0b0d;
-  border: 1px solid #1c1f23;
-  border-radius: var(--radius);
-  color: #e7e9ec;
+  background: var(--code-bg);
+  border: 1px solid var(--border-visible);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
   overflow-x: auto;
-  font-size: 0.8rem;
+  font-size: 13px;
   line-height: 1.6;
 }
 
@@ -95,34 +100,39 @@
 .prose blockquote {
   margin: 1rem 0;
   padding: 0.25rem 0 0.25rem 1rem;
-  border-left: 2px solid var(--primary);
-  color: var(--muted);
+  border-left: 2px solid var(--interactive);
+  color: var(--text-secondary);
 }
 
 .prose table {
   width: 100%;
   margin: 1rem 0;
   border-collapse: collapse;
-  font-size: 0.85rem;
+  font-size: var(--body-sm);
   display: block;
   overflow-x: auto;
 }
 
 .prose th,
 .prose td {
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-visible);
   padding: 0.45rem 0.65rem;
   text-align: left;
   vertical-align: top;
 }
 
 .prose th {
-  background: var(--bg-alt);
-  font-weight: 650;
+  background: var(--surface-raised);
+  font-family: var(--font-data);
+  font-size: var(--label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .prose hr {
   margin: 1.5rem 0;
   border: 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-visible);
 }

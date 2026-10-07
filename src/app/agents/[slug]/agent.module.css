@@ -9,24 +9,25 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.45rem;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-family: var(--font-data);
+  font-size: var(--caption);
+  letter-spacing: 0.04em;
 }
 
 .breadcrumb a {
-  transition: color 0.15s ease;
+  transition: color 0.2s var(--ease);
 }
 
 .breadcrumb a:hover {
-  color: var(--primary);
+  color: var(--interactive);
 }
 
 .header {
   display: grid;
   gap: 0.6rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-visible);
 }
 
 .titleRow {
@@ -37,16 +38,16 @@
 }
 
 .dot {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-visible);
   flex: 0 0 auto;
 }
 
 .title {
   margin: 0;
-  font-family: var(--font-mono);
+  font-family: var(--font-data);
   font-size: clamp(1.3rem, 3vw, 1.7rem);
   letter-spacing: -0.01em;
   overflow-wrap: anywhere;
@@ -55,8 +56,8 @@
 .description {
   margin: 0;
   max-width: 70ch;
-  color: var(--muted);
-  line-height: 1.7;
+  color: var(--text-secondary);
+  line-height: 1.65;
 }
 
 .badges {
@@ -88,17 +89,17 @@
   display: grid;
   gap: 0.6rem;
   padding: 1.1rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-visible);
   border-radius: var(--radius-lg);
-  background: var(--panel);
+  background: var(--surface);
 }
 
 .panelLabel {
   margin-top: 0.35rem;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  font-family: var(--font-data);
+  font-size: var(--label);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -111,15 +112,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.6rem;
-  padding: 0.5rem 0.6rem 0.5rem 0.75rem;
-  border: 1px solid var(--border-strong);
+  padding: 0.45rem 0.55rem 0.45rem 0.7rem;
+  border: 1px solid var(--border-visible);
   border-radius: var(--radius);
   background: var(--code-bg);
 }
 
 .mention code {
-  color: var(--primary);
-  font-size: 0.85rem;
+  color: var(--text-display);
+  font-size: 13px;
   overflow-wrap: anywhere;
 }
 
@@ -136,24 +137,24 @@
   gap: 0.75rem;
   min-width: 0;
   padding-bottom: 0.3rem;
-  border-bottom: 1px dashed var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .meta dt {
-  color: var(--muted);
-  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-size: var(--caption);
 }
 
 .meta dd {
   margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-family: var(--font-data);
+  font-size: var(--caption);
   text-align: right;
   overflow-wrap: anywhere;
 }
 
 .meta dd a {
-  color: var(--primary);
+  color: var(--interactive);
 }
 
 .permissions {
@@ -170,32 +171,33 @@
   gap: 0 0.5rem;
   align-items: baseline;
   padding-bottom: 0.3rem;
-  border-bottom: 1px dashed var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .permTool {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-family: var(--font-data);
+  font-size: var(--caption);
 }
 
 .permMode {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  color: var(--fg);
+  font-family: var(--font-data);
+  font-size: var(--caption);
+  color: var(--text-display);
 }
 
 .permPatterns {
   grid-column: 1 / -1;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
+  color: var(--text-secondary);
+  font-family: var(--font-data);
+  font-size: var(--label);
   overflow-wrap: anywhere;
 }
 
 .source {
   margin-top: 0.4rem;
-  color: var(--primary);
-  font-size: 0.82rem;
+  color: var(--interactive);
+  font-family: var(--font-data);
+  font-size: var(--caption);
 }
 
 .source:hover {
@@ -211,8 +213,9 @@
 .relatedTitle {
   margin: 0;
   font-size: 1rem;
+  font-weight: 400;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-visible);
 }
 
 .relatedList {
@@ -226,27 +229,27 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--panel);
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border-visible);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-data);
+  font-size: var(--label);
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
 .relatedChip:hover,
 .relatedMore:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--interactive);
+  color: var(--interactive);
 }
 
 .relatedDot {
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-visible);
 }
 
 @media (max-width: 960px) {

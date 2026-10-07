@@ -6,10 +6,10 @@ import styles from "./skills.module.css";
 
 export const metadata: Metadata = {
   title: "Skills",
-  description: `${meta.skills.total} skills: ${meta.skills.project} project skills and ${meta.skills.senior} deep-reference skills, loaded on demand.`,
+  description: `${meta.skills.total} skills: ${meta.skills.project} project skills, ${meta.skills.senior} deep-reference packs, and ${meta.skills.content} content system, loaded on demand.`,
 };
 
-function SkillGrid({ kind }: { kind: "project" | "senior" }) {
+function SkillGrid({ kind }: { kind: "project" | "senior" | "content" }) {
   const skills = getSkillsByKind(kind);
   return (
     <div className={styles.grid}>
@@ -41,7 +41,8 @@ export default function SkillsPage() {
         <h1 className={styles.title}>Skills</h1>
         <p className={styles.lead}>
           Skills are loaded on demand by agents through the built-in skill tool. Project skills
-          document specific products; senior skills are deep references for whole ecosystems.
+          document specific products; senior skills are deep references for whole ecosystems;
+          content skills run publishing systems.
         </p>
       </header>
 
@@ -59,6 +60,14 @@ export default function SkillsPage() {
           <Badge>{meta.skills.senior}</Badge>
         </div>
         <SkillGrid kind="senior" />
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>Content skills</h2>
+          <Badge>{meta.skills.content}</Badge>
+        </div>
+        <SkillGrid kind="content" />
       </section>
     </div>
   );

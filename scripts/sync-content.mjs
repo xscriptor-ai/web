@@ -8,7 +8,7 @@ import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join, dirname, relative, resolve, basename } from "node:path";
 import { fileURLToPath } from "node:url";
-import matter from "gray-matter";
+import { parse as parseYaml } from "yaml";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
@@ -30,7 +30,13 @@ function findLocal(kind) {
   }
   for (const candidate of [join(WORKSPACE, kind), join(ROOT, "..", kind)]) {
     if (kind === "agents" && existsSync(join(candidate, "agents"))) return candidate;
-    if (kind === "skills" && existsSync(join(candidate, "senior", "skills"))) return candidate;
+    if (
+      kind === "skills" &&
+      (existsSync(join(candidate, "senior", "skills")) ||
+        existsSync(join(candidate, "web-fullstack")) ||
+        existsSync(join(candidate, "content")))
+    )
+      return candidate;
   }
   return null;
 }
@@ -77,8 +83,11 @@ function permValue(value) {
 }
 
 function parseSource(text) {
-  const { data, content } = matter(text);
-  return { data, content };
+  const match = /^\uFEFF?---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(text);
+  if (!match) return { data: {}, content: text };
+  const parsed = parseYaml(match[1]);
+  const data = parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  return { data, content: text.slice(match[0].length) };
 }
 
 async function buildAgents(repoDir) {
@@ -140,19 +149,23 @@ async function buildAgents(repoDir) {
 async function buildSkills(repoDir) {
   const skills = [];
 
-  const seniorRoot = join(repoDir, "senior", "skills");
-  for (const entry of existsSync(seniorRoot) ? readdirSync(seniorRoot) : []) {
-    const skillFile = join(seniorRoot, entry, "SKILL.md");
-    if (!existsSync(skillFile)) continue;
-    skills.push(await parseSkill(skillFile, "senior", `senior/skills/${entry}`, SOURCES.skills));
+  const seniorRoot = existsSync(join(repoDir, "senior", "skills"))
+    ? join(repoDir, "senior", "skills")
+    : join(repoDir, "senior");
+  for (const file of walk(seniorRoot)) {
+    if (basename(file) !== "SKILL.md") continue;
+    const rel = relative(repoDir, dirname(file)).replaceAll("\\", "/");
+    skills.push(await parseSkill(file, "senior", rel, SOURCES.skills));
   }
 
-  const projectRoot = join(repoDir, "skills");
-  for (const file of walk(projectRoot)) {
-    if (basename(file) !== "SKILL.md") continue;
-    const rel = relative(projectRoot, dirname(file)).replaceAll("\\", "/");
-    const name = basename(dirname(file));
-    skills.push(await parseSkill(file, "project", `skills/${rel}`, SOURCES.skills, name));
+  for (const [base, kind] of [["web-fullstack", "project"], ["content", "content"], ["skills", "project"]]) {
+    const projectRoot = join(repoDir, base);
+    for (const file of walk(projectRoot)) {
+      if (basename(file) !== "SKILL.md") continue;
+      const rel = relative(repoDir, dirname(file)).replaceAll("\\", "/");
+      const name = basename(dirname(file));
+      skills.push(await parseSkill(file, kind, rel, SOURCES.skills, name));
+    }
   }
 
   return skills.sort((a, b) => (a.kind === b.kind ? a.name.localeCompare(b.name) : a.kind.localeCompare(b.kind)));
@@ -162,6 +175,7 @@ async function parseSkill(file, kind, path, repo, nameOverride) {
   const { data, content } = parseSource(readFileSync(file, "utf8"));
   const dir = dirname(file);
   const name = nameOverride ?? basename(dir);
+  const metadata = data.metadata && typeof data.metadata === "object" ? data.metadata : {};
   const references = [];
   const refsDir = join(dir, "references");
   for (const ref of walk(refsDir)) {
@@ -176,7 +190,7 @@ async function parseSkill(file, kind, path, repo, nameOverride) {
     name,
     description: String(data.description ?? "").trim(),
     kind,
-    version: data.version ? String(data.version) : null,
+    version: data.version ? String(data.version) : metadata["port-version"] ? String(metadata["port-version"]) : null,
     path,
     references,
     body: await mdToHtml(content),
@@ -185,20 +199,24 @@ async function parseSkill(file, kind, path, repo, nameOverride) {
 }
 
 async function buildCommands(repoDir) {
-  const commandsDir = join(repoDir, "commands");
+  const commandsDirs = [join(repoDir, "claude", "commands"), join(repoDir, "commands")];
   const commands = [];
-  for (const file of existsSync(commandsDir) ? readdirSync(commandsDir) : []) {
-    if (!file.endsWith(".md") || file === "README.md") continue;
-    const path = join(commandsDir, file);
-    const { data, content } = parseSource(readFileSync(path, "utf8"));
-    commands.push({
-      name: basename(file, ".md"),
-      description: String(data.description ?? "").trim(),
-      agent: data.agent ? String(data.agent) : null,
-      subtask: data.subtask === true,
-      body: await mdToHtml(content),
-      source: `${SOURCES.skills}/blob/main/commands/${file}`,
-    });
+  for (const commandsDir of commandsDirs) {
+    for (const file of existsSync(commandsDir) ? readdirSync(commandsDir) : []) {
+      if (!file.endsWith(".md") || file === "README.md") continue;
+      const path = join(commandsDir, file);
+      const { data, content } = parseSource(readFileSync(path, "utf8"));
+      const delegate = content.match(/Delegate this task to the `([^`]+)` subagent/);
+      const dir = relative(repoDir, commandsDir).replaceAll("\\", "/");
+      commands.push({
+        name: basename(file, ".md"),
+        description: String(data.description ?? "").trim(),
+        agent: data.agent ? String(data.agent) : delegate ? delegate[1] : null,
+        subtask: data.subtask === true,
+        body: await mdToHtml(content),
+        source: `${SOURCES.agents}/blob/main/${dir}/${file}`,
+      });
+    }
   }
   return commands.sort((a, b) => a.name.localeCompare(b.name));
 }
@@ -223,7 +241,7 @@ async function main() {
 
   const { index, full, groups } = await buildAgents(agentsRepo);
   const skills = await buildSkills(skillsRepo);
-  const commands = await buildCommands(skillsRepo);
+  const commands = await buildCommands(agentsRepo);
 
   const meta = {
     generatedAt: new Date().toISOString(),
@@ -237,6 +255,7 @@ async function main() {
       total: skills.length,
       project: skills.filter((skill) => skill.kind === "project").length,
       senior: skills.filter((skill) => skill.kind === "senior").length,
+      content: skills.filter((skill) => skill.kind === "content").length,
     },
     commands: commands.length,
     groups,
@@ -251,7 +270,7 @@ async function main() {
   writeFileSync(join(OUT_DIR, "meta.json"), JSON.stringify(meta, null, 2));
 
   console.log(`    agents: ${meta.agents.total} (${meta.agents.specialized} specialized, ${meta.agents.senior} senior)`);
-  console.log(`    skills: ${meta.skills.total} (${meta.skills.project} project, ${meta.skills.senior} senior)`);
+  console.log(`    skills: ${meta.skills.total} (${meta.skills.project} project, ${meta.skills.senior} senior, ${meta.skills.content} content)`);
   console.log(`    commands: ${meta.commands}`);
   console.log(`    groups: ${groups.length}`);
   console.log(`==> Wrote ${relative(ROOT, OUT_DIR)}/`);
