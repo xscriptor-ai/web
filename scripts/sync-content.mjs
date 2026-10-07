@@ -8,7 +8,7 @@ import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join, dirname, relative, resolve, basename } from "node:path";
 import { fileURLToPath } from "node:url";
-import matter from "gray-matter";
+import { parse as parseYaml } from "yaml";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
@@ -83,8 +83,11 @@ function permValue(value) {
 }
 
 function parseSource(text) {
-  const { data, content } = matter(text);
-  return { data, content };
+  const match = /^\uFEFF?---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(text);
+  if (!match) return { data: {}, content: text };
+  const parsed = parseYaml(match[1]);
+  const data = parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  return { data, content: text.slice(match[0].length) };
 }
 
 async function buildAgents(repoDir) {
