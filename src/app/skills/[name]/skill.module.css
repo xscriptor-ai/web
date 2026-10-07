@@ -9,25 +9,26 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.45rem;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-family: var(--font-data);
+  font-size: var(--caption);
+  letter-spacing: 0.04em;
 }
 
 .breadcrumb a:hover {
-  color: var(--primary);
+  color: var(--interactive);
 }
 
 .header {
   display: grid;
   gap: 0.7rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-visible);
 }
 
 .title {
   margin: 0;
-  font-family: var(--font-mono);
+  font-family: var(--font-data);
   font-size: clamp(1.35rem, 3vw, 1.8rem);
   overflow-wrap: anywhere;
 }
@@ -35,8 +36,8 @@
 .description {
   margin: 0;
   max-width: 70ch;
-  color: var(--muted);
-  line-height: 1.7;
+  color: var(--text-secondary);
+  line-height: 1.65;
 }
 
 .badges {
@@ -46,8 +47,9 @@
 }
 
 .source {
-  color: var(--primary);
-  font-size: 0.85rem;
+  color: var(--interactive);
+  font-family: var(--font-data);
+  font-size: var(--caption);
   width: fit-content;
 }
 
@@ -70,8 +72,9 @@
 .referencesTitle {
   margin: 0;
   font-size: 1.05rem;
+  font-weight: 400;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-visible);
 }
 
 .referenceList {
@@ -80,15 +83,10 @@
 }
 
 .reference {
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-visible);
   border-radius: var(--radius-lg);
-  background: var(--panel);
+  background: var(--surface);
   overflow: hidden;
-  transition: border-color 0.15s ease;
-}
-
-.reference:hover {
-  border-color: var(--border-strong);
 }
 
 .referenceSummary {
@@ -99,6 +97,7 @@
   padding: 0.8rem 1rem;
   cursor: pointer;
   list-style: none;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
 .referenceSummary::-webkit-details-marker {
@@ -106,27 +105,27 @@
 }
 
 .referenceSummary:hover {
-  color: var(--primary);
+  background: var(--surface-raised);
 }
 
 .referenceName {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-family: var(--font-data);
+  font-size: 13px;
 }
 
 .referenceHint {
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-family: var(--font-data);
+  font-size: var(--label);
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .reference[open] .referenceHint {
-  color: var(--primary);
+  color: var(--interactive);
 }
 
 .referenceBody {
   padding: 0.85rem 1rem 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-visible);
 }

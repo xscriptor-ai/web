@@ -21,6 +21,8 @@ const sections = [
   { id: "updating", label: "Updating" },
 ];
 
+const installSkills = meta.skills.project + meta.skills.senior;
+
 export default function DocsPage() {
   return (
     <div className={styles.page}>
@@ -42,13 +44,13 @@ export default function DocsPage() {
             <TerminalWindow
               command="npx @xscriptor/ai-agents"
               output={[
-                "✓ 181 specialized agents · 24 senior agents",
-                "✓ 21 skills · 8 commands",
-                "→ ~/.config/opencode/",
+                `[OK] ${meta.agents.specialized} specialized · ${meta.agents.senior} senior agents`,
+                `[OK] ${installSkills} skills · ${meta.commands} commands`,
+                "[..] ~/.config/opencode/",
               ]}
             />
             <p className={styles.text}>
-              Installs {meta.agents.total} agents, {meta.skills.total} skills, and {meta.commands}{" "}
+              Installs {meta.agents.total} agents, {installSkills} skills, and {meta.commands}{" "}
               commands into <code>~/.config/opencode/</code>. Target another platform or scope with
               the flags below.
             </p>
@@ -115,14 +117,17 @@ export default function DocsPage() {
                 <tbody>
                   <tr><td>Specialized agents</td><td>{meta.agents.specialized}</td><td><code>~/.config/opencode/agents/</code></td></tr>
                   <tr><td>Senior agents</td><td>{meta.agents.senior}</td><td><code>~/.config/opencode/agents/</code></td></tr>
-                  <tr><td>Skills</td><td>{meta.skills.total}</td><td><code>~/.config/opencode/skills/</code></td></tr>
+                  <tr><td>Project skills</td><td>{meta.skills.project}</td><td><code>~/.config/opencode/skills/</code></td></tr>
+                  <tr><td>Senior skills</td><td>{meta.skills.senior}</td><td><code>~/.config/opencode/skills/</code></td></tr>
                   <tr><td>Commands</td><td>{meta.commands}</td><td><code>~/.config/opencode/commands/</code></td></tr>
                 </tbody>
               </table>
             </div>
             <p className={styles.text}>
               With <code>--project</code>, everything goes to <code>.opencode/</code> in the current
-              directory instead, which keeps installs isolated per repository.
+              directory instead, which keeps installs isolated per repository. The{" "}
+              {meta.skills.content} content skill in the skills repo is catalogued on the site and
+              installed by copying its folder.
             </p>
           </section>
 
@@ -130,8 +135,8 @@ export default function DocsPage() {
             <h2 className={styles.sectionTitle}>Claude Code</h2>
             <p className={styles.text}>
               Claude Code uses a different frontmatter schema, so the collection ships a generated
-              mirror with translated agents, prefixed skills (<code>senior-python</code>), and{" "}
-              <code>x-</code> commands to avoid collisions with native ones.
+              mirror with translated agents and prefixed skills (<code>senior-python</code>).
+              Slash commands keep their <code>x-</code> prefix on both platforms.
             </p>
             <TerminalWindow command="npx @xscriptor/ai-agents --anthropic" />
             <p className={styles.text}>
@@ -157,6 +162,7 @@ export default function DocsPage() {
                   <tr><td><code>@xscriptor/skill-xscriptor</code></td><td><code>npx @xscriptor/skill-xscriptor</code></td></tr>
                   <tr><td><code>@xscriptor/skill-devx</code></td><td><code>npx @xscriptor/skill-devx</code></td></tr>
                   <tr><td><code>@xscriptor/skill-samurai</code></td><td><code>npx @xscriptor/skill-samurai</code></td></tr>
+                  <tr><td><code>@xscriptor/skill-xglassmorphism</code></td><td><code>npx @xscriptor/skill-xglassmorphism</code></td></tr>
                 </tbody>
               </table>
             </div>

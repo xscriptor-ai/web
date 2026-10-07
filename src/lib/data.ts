@@ -24,13 +24,13 @@ export function formatTemperature(value: number | null): string | null {
 }
 
 const COLOR_TOKENS: Record<string, string> = {
-  error: "#ef4444",
-  warning: "#f59e0b",
-  info: "#3b82f6",
-  success: "#22c55e",
-  primary: "#84cc16",
-  accent: "#a855f7",
-  secondary: "#06b6d4",
+  error: "var(--error)",
+  warning: "var(--warning)",
+  info: "var(--interactive)",
+  success: "var(--success)",
+  primary: "var(--text-display)",
+  accent: "var(--accent)",
+  secondary: "var(--text-secondary)",
 };
 
 export function colorToCss(color: string | null): string {

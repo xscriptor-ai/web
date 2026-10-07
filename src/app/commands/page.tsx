@@ -7,7 +7,7 @@ import styles from "./commands.module.css";
 
 export const metadata: Metadata = {
   title: "Commands",
-  description: `${meta.commands} slash commands that delegate to agents: /review, /audit, /docs, /arch, /test, /deploy, /refactor, /design.`,
+  description: `${meta.commands} slash commands that delegate to agents: /x-review, /x-audit, /x-docs, /x-arch, /x-test, /x-deploy, /x-refactor, /x-design.`,
 };
 
 export default function CommandsPage() {
@@ -26,11 +26,7 @@ export default function CommandsPage() {
         {commands.map((command) => (
           <article key={command.name} className={styles.command}>
             <header className={styles.bar}>
-              <span className={styles.lights} aria-hidden="true">
-                <i data-light="close" />
-                <i data-light="min" />
-                <i data-light="max" />
-              </span>
+              <span className={styles.tag}>[ cmd ]</span>
               <code className={styles.name}>$ /{command.name}</code>
               <CopyButton value={`/${command.name}`} />
             </header>

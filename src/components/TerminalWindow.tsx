@@ -15,25 +15,35 @@ export function TerminalWindow({
   return (
     <div className={styles.window}>
       <div className={styles.bar}>
-        <span className={styles.lights} aria-hidden="true">
-          <i data-light="close" />
-          <i data-light="min" />
-          <i data-light="max" />
-        </span>
-        <span className={styles.title}>{title}</span>
+        <span className={styles.tag}>[ {title} ]</span>
         <CopyButton value={command} label={copyLabel} />
       </div>
       <pre className={styles.body}>
         <code>
           <span className={styles.line}>
-            <span className={styles.prompt}>$ </span>
+            <span className={styles.prompt}>$</span>
             <span className={styles.command}>{command}</span>
           </span>
-          {output.map((line) => (
-            <span key={line} className={styles.output}>
-              {line}
-            </span>
-          ))}
+          {output.map((line) => {
+            const match = line.match(/^(\[[^\]]+\])(.*)$/);
+            if (!match) {
+              return (
+                <span key={line} className={styles.output}>
+                  {line}
+                </span>
+              );
+            }
+            return (
+              <span key={line} className={styles.output}>
+                <span
+                  className={match[1] === "[OK]" ? styles.statusOk : styles.status}
+                >
+                  {match[1]}
+                </span>
+                {match[2]}
+              </span>
+            );
+          })}
         </code>
       </pre>
     </div>

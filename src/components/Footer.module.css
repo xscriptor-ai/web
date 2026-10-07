@@ -1,16 +1,6 @@
 .footer {
-  position: relative;
-  border-top: 1px solid var(--border);
-  background: var(--bg-alt);
-}
-
-.footer::before {
-  content: "";
-  position: absolute;
-  inset: -1px 0 auto 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--primary) 40%, transparent), transparent);
-  pointer-events: none;
+  border-top: 1px solid var(--border-visible);
+  background: var(--surface);
 }
 
 .inner {
@@ -37,27 +27,25 @@
 
 .logo {
   display: block;
-  width: 1.7rem;
+  width: 1.6rem;
   height: auto;
-  filter: invert(1);
 }
 
 .wordmark {
-  font-family: var(--font-mono);
-  font-size: 0.92rem;
-  font-weight: 600;
+  font-family: var(--font-data);
+  font-size: 0.85rem;
 }
 
 .wordmarkDim {
-  color: var(--muted);
+  color: var(--text-secondary);
 }
 
 .tagline {
   margin: 0;
-  max-width: 30ch;
-  color: var(--muted);
-  font-size: 0.85rem;
-  line-height: 1.65;
+  max-width: 32ch;
+  color: var(--text-secondary);
+  font-size: var(--body-sm);
+  line-height: 1.6;
 }
 
 .column {
@@ -68,12 +56,12 @@
 
 .title {
   margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  font-family: var(--font-data);
+  font-size: var(--label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted);
 }
 
 .list {
@@ -85,13 +73,13 @@
 }
 
 .list a {
-  color: var(--fg);
-  font-size: 0.87rem;
-  transition: color 0.15s ease;
+  color: var(--text-primary);
+  font-size: var(--body-sm);
+  transition: color 0.2s var(--ease);
 }
 
 .list a:hover {
-  color: var(--primary);
+  color: var(--interactive);
 }
 
 .legal {
@@ -102,15 +90,11 @@
   width: 100%;
   max-width: var(--max);
   margin: 0 auto;
-  padding: 1.1rem 1.5rem 2rem;
+  padding: 1rem 1.5rem 2rem;
   border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-}
-
-[data-theme="light"] .logo {
-  filter: none;
+  color: var(--text-secondary);
+  font-family: var(--font-data);
+  font-size: var(--caption);
 }
 
 @media (max-width: 900px) {

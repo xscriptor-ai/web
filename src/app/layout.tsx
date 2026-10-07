@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import "@fontsource-variable/inter";
 import "@fontsource-variable/space-grotesk";
-import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/doto";
+import "@fontsource/space-mono/400.css";
+import "@fontsource/space-mono/700.css";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { meta } from "@/lib/data";
 import styles from "./layout.module.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://xscriptor-ai.github.io";
@@ -17,8 +19,7 @@ export const metadata: Metadata = {
     default: "xscriptor-ai — Agents and Skills for OpenCode and Claude Code",
     template: "%s · xscriptor-ai",
   },
-  description:
-    "Ready-to-use AI agents, skills, and slash commands for OpenCode and Claude Code. Browse 181 specialized agents, 24 senior agents, 21 skills, and 8 commands.",
+  description: `Ready-to-use AI agents, skills, and slash commands for OpenCode and Claude Code. Browse ${meta.agents.specialized} specialized agents, ${meta.agents.senior} senior agents, ${meta.skills.total} skills, and ${meta.commands} commands.`,
   openGraph: {
     type: "website",
     siteName: "xscriptor-ai",

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { meta } from "@/lib/data";
+import { AsciiLogo } from "@/components/AsciiLogo";
 import { TerminalWindow } from "@/components/TerminalWindow";
 import styles from "./home.module.css";
 
@@ -7,10 +8,12 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const installCommand = "npx @xscriptor/ai-agents";
 
+const installSkills = meta.skills.project + meta.skills.senior;
+
 const installOutput = [
-  "✓ 181 specialized agents · 24 senior agents",
-  "✓ 21 skills · 8 commands",
-  "→ ~/.config/opencode/",
+  `[OK] ${meta.agents.specialized} specialized · ${meta.agents.senior} senior agents`,
+  `[OK] ${installSkills} skills · ${meta.commands} commands`,
+  "[..] ~/.config/opencode/",
 ];
 
 const steps = [
@@ -32,9 +35,9 @@ const collectionCards = [
   {
     href: "/skills",
     title: "Skills",
-    body: `${meta.skills.project} project skills and ${meta.skills.senior} deep-reference skills, loaded on demand.`,
+    body: `${meta.skills.project} project skills, ${meta.skills.senior} deep-reference packs, and ${meta.skills.content} content system, loaded on demand.`,
     icon: (
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z" />
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H19" />
       </svg>
@@ -43,9 +46,9 @@ const collectionCards = [
   {
     href: "/commands",
     title: "Commands",
-    body: `${meta.commands} slash commands like /review, /audit, and /docs that delegate to the right agent.`,
+    body: `${meta.commands} slash commands like /x-review, /x-audit, and /x-docs that delegate to the right agent.`,
     icon: (
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="m5 8 4 4-4 4" />
         <path d="M12 16h7" />
       </svg>
@@ -56,7 +59,7 @@ const collectionCards = [
     title: "Docs",
     body: "Install for OpenCode or Claude Code, scope to a project, update, and uninstall cleanly.",
     icon: (
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M14 3v5h5" />
         <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
         <path d="M9 13h6M9 17h4" />
@@ -79,16 +82,19 @@ export default function HomePage() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <div className={styles.heroBg} aria-hidden="true" />
+        <div className={styles.brandMark}>
+          <AsciiLogo />
+          <hr className={styles.brandRule} />
+        </div>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>
-            <img className={styles.eyebrowLogo} src={`${basePath}/logo-glyph.png`} alt="" width={14} height={14} />
+            <img className={styles.eyebrowLogo} src={`${basePath}/logo-glyph.svg`} alt="" width={13} height={13} />
             OpenCode + Claude Code
           </p>
           <h1 className={styles.title}>
             Install a full
             <br />
-            <span className={styles.titleAccent}>engineering team.</span>
+            <span className={styles.titleDim}>engineering team.</span>
           </h1>
           <p className={styles.lead}>
             {meta.agents.total} agents, {meta.skills.total} skills, and {meta.commands} slash
@@ -156,7 +162,7 @@ export default function HomePage() {
         <div className={styles.steps}>
           {steps.map((step, index) => (
             <div key={step.title} className={styles.step}>
-              <span className={styles.stepNumber}>0{index + 1}</span>
+              <span className={styles.stepNumber}>STEP 0{index + 1}</span>
               <h3 className={styles.stepTitle}>{step.title}</h3>
               <p className={styles.stepBody}>{step.body}</p>
             </div>
@@ -181,10 +187,9 @@ export default function HomePage() {
       </section>
 
       <section className={styles.cta}>
-        <div className={styles.ctaBg} aria-hidden="true" />
         <div className={styles.ctaCopy}>
           <p className={styles.kicker}>Start now</p>
-          <h2 className={styles.ctaTitle}>One command between you and 205 agents.</h2>
+          <h2 className={styles.ctaTitle}>One command between you and {meta.agents.total} agents.</h2>
           <p className={styles.ctaBody}>
             Works with OpenCode out of the box, and with Claude Code through the generated mirror.
           </p>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="143.5 213.8 737.1 737.1" width="737" height="737">
+<defs>
+<linearGradient id="x-gradient" gradientUnits="userSpaceOnUse" x1="0" y1="160" x2="800" y2="960">
+<stop offset="0" stop-color="#FF7C80"/>
+<stop offset="0.02" stop-color="#FD7E6D"/>
+<stop offset="0.08" stop-color="#FD8D5C"/>
+<stop offset="0.14" stop-color="#FD9F56"/>
+<stop offset="0.21" stop-color="#FDB75B"/>
+<stop offset="0.27" stop-color="#FCD362"/>
+<stop offset="0.33" stop-color="#F4E369"/>
+<stop offset="0.39" stop-color="#D3E173"/>
+<stop offset="0.46" stop-color="#B6DE7C"/>
+<stop offset="0.52" stop-color="#8EDA8A"/>
+<stop offset="0.58" stop-color="#77D89A"/>
+<stop offset="0.64" stop-color="#70D7AC"/>
+<stop offset="0.71" stop-color="#65D6CA"/>
+<stop offset="0.77" stop-color="#5DD3E1"/>
+<stop offset="0.83" stop-color="#67C3E4"/>
+<stop offset="0.89" stop-color="#77AFE5"/>
+<stop offset="1" stop-color="#7EA8E6"/>
+</linearGradient>
+</defs>
+<g transform="translate(160.333 90.000) scale(0.87917)">
+<g fill="none" stroke-width="27.0" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 0.0 160.0 L 100.0 160.0" stroke="url(#x-gradient)"/>
+<path d="M 100.0 160.0 L 200.0 160.0" stroke="url(#x-gradient)"/>
+<path d="M 400.0 160.0 L 500.0 160.0" stroke="url(#x-gradient)"/>
+<path d="M 500.0 160.0 L 600.0 160.0" stroke="url(#x-gradient)"/>
+<path d="M 200.0 160.0 L 300.0 320.0" stroke="url(#x-gradient)"/>
+<path d="M 400.0 160.0 L 500.0 320.0" stroke="url(#x-gradient)"/>
+<path d="M 500.0 320.0 L 600.0 160.0" stroke="url(#x-gradient)"/>
+<path d="M 700.0 320.0 L 800.0 160.0" stroke="url(#x-gradient)"/>
+<path d="M 300.0 320.0 L 400.0 480.0" stroke="url(#x-gradient)"/>
+<path d="M 600.0 480.0 L 700.0 320.0" stroke="url(#x-gradient)"/>
+<path d="M 300.0 640.0 L 400.0 480.0" stroke="url(#x-gradient)"/>
+<path d="M 600.0 480.0 L 700.0 640.0" stroke="url(#x-gradient)"/>
+<path d="M 200.0 800.0 L 300.0 640.0" stroke="url(#x-gradient)"/>
+<path d="M 300.0 800.0 L 400.0 800.0" stroke="url(#x-gradient)"/>
+<path d="M 400.0 800.0 L 500.0 640.0" stroke="url(#x-gradient)"/>
+<path d="M 500.0 640.0 L 600.0 800.0" stroke="url(#x-gradient)"/>
+<path d="M 600.0 800.0 L 700.0 800.0" stroke="url(#x-gradient)"/>
+<path d="M 700.0 640.0 L 800.0 800.0" stroke="url(#x-gradient)"/>
+<path d="M 100.0 960.0 L 200.0 800.0" stroke="#7E7B82"/>
+<path d="M 200.0 960.0 L 300.0 960.0" stroke="#7E7B82"/>
+<path d="M 300.0 960.0 L 400.0 960.0" stroke="#7E7B82"/>
+<path d="M 400.0 960.0 L 500.0 960.0" stroke="#7E7B82"/>
+<path d="M 500.0 960.0 L 600.0 960.0" stroke="#7E7B82"/>
+<path d="M 600.0 960.0 L 700.0 800.0" stroke="#7E7B82"/>
+</g>
+</g></svg>
