@@ -85,4 +85,7 @@ inverse glyph variants live in `public/logos/`.
 
 ## License
 
-MIT
+Licensed under the [GNU General Public License v3.0 or later](LICENSE)
+(GPL-3.0-or-later). Reuse and redistribution are welcome under the same
+license. Attribution is required; see [NOTICE](NOTICE) for the preferred
+credit and the attribution-preservation term (GPL-3.0 §7(b)).

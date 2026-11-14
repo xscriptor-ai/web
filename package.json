@@ -2,6 +2,7 @@
   "name": "@xscriptor-ai/web",
   "version": "0.1.0",
   "private": true,
+  "license": "GPL-3.0-or-later",
   "type": "module",
   "scripts": {
     "sync": "node scripts/sync-content.mjs",
