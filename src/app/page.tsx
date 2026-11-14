@@ -99,7 +99,7 @@ export default function HomePage() {
           <p className={styles.lead}>
             {meta.agents.total} agents, {meta.skills.total} skills, and {meta.commands} slash
             commands covering security, cloud, web, data, compliance, and systems. Markdown-first,
-            model-agnostic, MIT licensed.
+            model-agnostic, free software.
           </p>
           <div className={styles.actions}>
             <Link href="/agents" className={styles.primaryButton}>

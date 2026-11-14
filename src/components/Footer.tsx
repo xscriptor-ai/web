@@ -49,8 +49,8 @@ export function Footer() {
             </span>
           </div>
           <p className={styles.tagline}>
-            Agents, skills, and commands for OpenCode and Claude Code. MIT licensed and built in the
-            open.
+            Agents, skills, and commands for OpenCode and Claude Code. GPL-3.0-or-later code,
+            CC-BY-SA-4.0 content, built in the open.
           </p>
         </div>
         {columns.map((column) => (
